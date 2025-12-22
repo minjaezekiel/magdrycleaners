@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAG DRY CLEANERS - Professional Dry Cleaning Services</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #003366; /* Deep Blue */
+            --secondary-color: #0066CC; /* Bright Blue */
+            --accent-color: #0099CC; /* Light Blue */
+            --light-color: #FFFFFF; /* White */
+            --dark-color: #333333; /* Dark Gray */
+            --gray-color: #CCCCCC; /* Light Gray */
+            --success-color: #009933; /* Green */
+            --warning-color: #FF9900; /* Orange */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-color);
+            background-color: #F5F5F5;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(0, 51, 102, 0.95);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--light-color);
+            letter-spacing: 1px;
+        }
+        
+        .navbar-brand span {
+            color: var(--accent-color);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--light-color);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--accent-color);
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 51, 102, 0.8)), url('https://z-cdn-media.chatglm.cn/files/f91294a8-a478-4098-b615-a1d8e8154429_IMG-20251122-WA0002.jpg?auth_key=1863830412-e55356e13b5945f9adf81102d3634f82-0-24a62226f53fafae9c34ebb5e119d706');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--light-color);
+            padding: 200px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></svg>');
+            background-size: 100px 100px;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        .hero-buttons {
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .btn-hero {
+            padding: 15px 35px;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 10px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            animation: pulse 2s infinite;
+        }
+        
+        .btn-hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary-custom {
+            background-color: var(--accent-color);
+            color: var(--light-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-outline-custom {
+            background-color: transparent;
+            color: var(--light-color);
+            border-color: var(--light-color);
+        }
+        
+        .btn-outline-custom:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: var(--primary-color);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+        
+        .section-subtitle {
+            color: #666666;
+            margin-bottom: 50px;
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+        
+        /* About Section */
+        .about-section {
+            background-color: var(--light-color);
+        }
+        
+        .about-content {
+            position: relative;
+        }
+        
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent-color);
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s;
+        }
+        
+        .about-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            opacity: 0.2;
+            z-index: 1;
+            transition: all 0.5s;
+        }
+        
+        .about-image:hover::before {
+            opacity: 0;
+        }
+        
+        /* Services Section */
+        .services-section {
+            background-color: #F0F7FF;
+        }
+        
+        .service-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            transition: all 0.5s;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid var(--accent-color);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover .service-icon {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            background-color: var(--light-color);
+        }
+        
+        .gallery-item {
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s;
+            position: relative;
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            opacity: 0;
+            z-index: 1;
+            transition: opacity 0.5s;
+        }
+        
+        .gallery-item:hover::before {
+            opacity: 0.8;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--light-color);
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 2;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: #F0F7FF;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            transition: all 0.5s;
+            height: 100%;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--accent-color);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+        }
+        
+        .testimonial-author span {
+            font-weight: normal;
+            color: #666666;
+            font-size: 0.9rem;
+            display: block;
+        }
+        
+        .testimonial-rating {
+            color: var(--warning-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Working Hours Section */
+        .info-section {
+            background-color: var(--light-color);
+        }
+        
+        .info-card {
+            background-color: #F0F7FF;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s;
+            height: 100%;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-card-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-card-title i {
+            margin-right: 15px;
+            color: var(--accent-color);
+            font-size: 2rem;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .info-item i {
+            margin-right: 15px;
+            color: var(--secondary-color);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .info-item .day {
+            font-weight: 600;
+            width: 120px;
+        }
+        
+        .info-item .time {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 70px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+        }
+        
+        .footer-brand {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--light-color);
+            letter-spacing: 1px;
+        }
+        
+        .footer-brand span {
+            color: var(--accent-color);
+        }
+        
+        .footer-text {
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+        
+        .social-links a {
+            color: var(--light-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: all 0.3s;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: var(--light-color);
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .footer-links a::before {
+            content: '→';
+            position: absolute;
+            left: -15px;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 15px;
+        }
+        
+        .footer-links a:hover::before {
+            opacity: 1;
+            left: 0;
+        }
+        
+        .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-bottom {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 153, 204, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(0, 153, 204, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 153, 204, 0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 991.98px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .btn-hero {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">MAG <span>DRY CLEANERS</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#info">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>MAG <span>DRY CLEANERS</span></h1>
+            <p>Professional Dry Cleaning Services - Clean & Fresh</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-hero btn-primary-custom">Our Services</a>
+                <a href="#info" class="btn btn-hero btn-outline-custom">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="about-image">
+                        <img src="https://z-cdn-media.chatglm.cn/files/7f082728-d129-4959-a8ea-e0eb3e8f16c5_IMG-20251122-WA0003.jpg?auth_key=1863830412-f391e67656974a93957749bf10ca8ff1-0-8259d33de6092f60d015c83314bbd84f" alt="MAG DRY CLEANERS" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h2 class="section-title">About Us</h2>
+                        <p class="section-subtitle">Your trusted partner for professional dry cleaning services</p>
+                        <p>MAG DRY CLEANERS is a premier dry cleaning service provider located in Dar es Salaam, Tanzania. Established on September 1st, 2025, we have quickly become known for our exceptional quality, attention to detail, and customer-centric approach.</p>
+                        <p>Our team of experienced professionals is dedicated to providing the highest quality dry cleaning services for all types of garments and fabrics. We use state-of-the-art equipment and eco-friendly cleaning solutions to ensure your clothes are not only clean but also well-preserved.</p>
+                        <p>Located on Bahari Beach Road, we serve both individual and commercial clients, offering convenient pickup and delivery services to make your life easier.</p>
+                        <div class="mt-4">
+                            <a href="#info" class="btn btn-hero btn-primary-custom">Get In Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Professional cleaning solutions for all your needs</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3 class="service-title">Dry Cleaning</h3>
+                        <p>Professional dry cleaning for all types of garments including suits, dresses, shirts, and delicate fabrics. Our process preserves color and texture while removing stains effectively.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3 class="service-title">Curtain & Upholstery Cleaning</h3>
+                        <p>Specialized cleaning for curtains, drapes, and upholstery to refresh your home or office. We handle all fabric types with care to maintain their quality and appearance.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="service-title">Commercial Laundry</h3>
+                        <p>Comprehensive laundry solutions for businesses including hotels, restaurants, and healthcare facilities. We offer regular service schedules to meet your operational needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3 class="service-title">Pickup & Delivery</h3>
+                        <p>Convenient pickup and delivery service for our valued customers. Schedule a pickup at your convenience and have your freshly cleaned items delivered back to your doorstep.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        <h3 class="service-title">Wedding & Formal Wear</h3>
+                        <p>Specialized care for wedding dresses, formal gowns, and tuxedos. We understand the value and sentimental importance of these garments and treat them with the utmost care.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="service-title">Special Offers</h3>
+                        <p>Regular discounts and free washing offers for our loyal customers. Ask about our current promotions and loyalty program to save on your cleaning needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Facility</h2>
+                <p class="section-subtitle">Take a look at our modern dry cleaning facility</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://z-cdn-media.chatglm.cn/files/d225fb4c-97d8-4f7c-ba04-52410ceb5b77_IMG-20251122-WA0000.jpg?auth_key=1863830412-be1fe8a6bf324f6499fe22502d92f36b-0-196672d0bcfdd4c0c99abfcca3e55b8b" alt="Cleaned Clothes Display" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Quality Service</h3>
+                            <p>Professional cleaning with attention to detail</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://z-cdn-media.chatglm.cn/files/42513553-d9ad-4da6-bb4b-212578cafe83_IMG-20251122-WA0001.jpg?auth_key=1863830412-06bd05f3499b427a895ae0805b0af285-0-38d00a7223d574f7661bace7489a217d" alt="Service Display" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Modern Equipment</h3>
+                            <p>State-of-the-art cleaning technology</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://z-cdn-media.chatglm.cn/files/f91294a8-a478-4098-b615-a1d8e8154429_IMG-20251122-WA0002.jpg?auth_key=1863830412-e55356e13b5945f9adf81102d3634f82-0-24a62226f53fafae9c34ebb5e119d706" alt="Store Front" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Clean & Fresh</h3>
+                            <p>Professional dry cleaning services</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Customer Testimonials</h2>
+                <p class="section-subtitle">What our clients say about our services</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"MAG DRY CLEANERS has been my go-to for all my dry cleaning needs. Their attention to detail is exceptional, and my clothes always come back looking brand new. The pickup and delivery service is incredibly convenient!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah M.">
+                            <div>
+                                Sarah M.
+                                <span>Regular Customer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"We've been using MAG DRY CLEANERS for our hotel's laundry needs for months now. Their commercial service is reliable, efficient, and the quality is consistently excellent. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="James K.">
+                            <div>
+                                James K.
+                                <span>Hotel Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"I had my wedding dress cleaned at MAG DRY CLEANERS, and I was amazed by the results. They handled it with such care and removed all the stains from the big day. Thank you for preserving my precious memories!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Grace P.">
+                            <div>
+                                Grace P.
+                                <span>Happy Bride</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Working Hours & Contact Section -->
+    <section id="info" class="section info-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Contact Information</h2>
+                <p class="section-subtitle">Get in touch with us for your dry cleaning needs</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="info-card">
+                        <h3 class="info-card-title">
+                            <i class="fas fa-clock"></i>
+                            Working Hours
+                        </h3>
+                        <div class="info-item">
+                            <span class="day">Monday - Saturday</span>
+                            <span class="time">07:30 AM - 08:00 PM</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="day">Sunday</span>
+                            <span class="time">Closed</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="day">Public Holidays</span>
+                            <span class="time">Closed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="info-card">
+                        <h3 class="info-card-title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Location
+                        </h3>
+                        <div class="info-item">
+                            <i class="fas fa-location-arrow"></i>
+                            <span>Bahari Beach Road, Dar es Salaam, 70037, Tanzania</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>0748 757 588</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-instagram"></i>
+                            <span>@mag_drycleaners</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="info-card">
+                        <h3 class="info-card-title">
+                            <i class="fas fa-percentage"></i>
+                            Special Offers
+                        </h3>
+                        <div class="info-item">
+                            <i class="fas fa-gift"></i>
+                            <span>Regular discounts for loyal customers</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-tshirt"></i>
+                            <span>Free washing offers on selected services</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Free pickup & delivery for orders above TSh 20,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Map Section-->
+            <div class="map-container">
+                <!--  
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.497642503878!2d39.202192014756!3d-6.65676295158819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDUnNTcuMSJTIDM5wrAxNicxOS44JkU!5e0!3m2!1sen!2stz!4v1635957613556!5m2!1sen!2stz" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                -->
+                <iframe src="https://www.google.com/maps?q=-6.6567150,39.2021610&z=15&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="footer-brand">MAG <span>DRY CLEANERS</span></h3>
+                    <p class="footer-text">Professional dry cleaning services in Dar es Salaam. Clean & Fresh is our promise to you.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#info">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Bahari Beach Road, Dar es Salaam, 70037</li>
+                        <li><i class="fas fa-phone"></i> 0748 757 588</li>
+                        <li><i class="fas fa-envelope"></i> info@magdrycleaners.co.tz</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 07:30 AM - 08:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MAG DRY CLEANERS. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/255748757588" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    document.querySelector('.navbar').classList.add('scrolled');
+                } else {
+                    document.querySelector('.navbar').classList.remove('scrolled');
+                }
+                
+                // Add active class to navigation based on scroll position
+                let current = '';
+                const sections = document.querySelectorAll('section');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').slice(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
